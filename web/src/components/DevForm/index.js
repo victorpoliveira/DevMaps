@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import './styles.css';
 
-function DevForm(onSubmit) {
+function DevForm({ onSubmit }) {
   const [github_username, setGithubUsername] = useState('');
   const [techs, setTechs] = useState('');
   const [latitude, setLatitude] = useState('');
@@ -90,7 +90,7 @@ function DevForm(onSubmit) {
 
       <button type="submit">Salvar</button>
     </form>
-  )
+  );
 }
 
 export default DevForm;
