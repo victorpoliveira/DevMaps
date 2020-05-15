@@ -1,26 +1,44 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Eu te amo Rebeca!</Text>
-    </View>
-  );
-}
+import Main from "./src/pages/Main";
+import Profile from "./src/pages/Profile"
 
 const Stack = createStackNavigator();
 
-function App() {
+export default function App() {
   return (
+    <>
+    <StatusBar barStyle="light-content" backgroundColor="#7d40e7" />
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-      </Stack.Navigator>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{ 
+          gestureEnabled: false,
+          headerTintColor: '#fff',
+          headerBackTitleVisible: false,
+          headerStyle: {
+            backgroundColor: '#7d40e7'
+          },
+        }}
+      >
+
+      <Stack.Screen
+        name="Home"
+        component={Main}
+        options={{ title: 'DevMaps' }}
+      />
+
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        initialParams={{ title: 'Perfil no Github' }}
+      />
+
+    </Stack.Navigator>
     </NavigationContainer>
+    </>
   );
 }
-
-export default App;
